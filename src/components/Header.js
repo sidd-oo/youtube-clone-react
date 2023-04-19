@@ -16,10 +16,10 @@ const Header = () => {
                 }}src={HamburgerIcon} alt="hamburger-icon" />
                 <img className="w-8 h-8 ml-3" src={VideoIcon} alt="video-icon" />
             </div>
-            <div className='flex mx-2'>
-                <input className="border-2 rounded-l-3xl border-r-0" type='text' placeholder='Search'></input>
-                <button>
-                    <img className='border-2 rounded-r-3xl  border-l-0 w-6 h-8' src={SearchIcon} alt="search-icon" />
+            <div className='flex'>
+                <input className="placeholder:pl-3 placeholder-gray-500 border-2 rounded-l-3xl border-r-0 w-[400px] h-8" type='text' placeholder='Search'></input>
+                <button className='border-2 rounded-r-3xl bg-gray-100 border-l-0 w-10 h-8'>
+                    <img className='w-5 h-5 mx-auto' src={SearchIcon} alt="search-icon" />
                 </button>
             </div>
             <div className='mx-2'>
