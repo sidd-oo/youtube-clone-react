@@ -1,5 +1,5 @@
 import React from 'react'
-import { SIDEBAR_OPTIONS } from '../constants'
+import { SIDEBAR_OPTIONS } from "../utils/constants"
 import { useSelector } from 'react-redux'
 
 const SidebarOption = ({ icon, name }) => {

@@ -1,6 +1,6 @@
-import HomeIcon from "./assets/images/home.svg"
+import HomeIcon from "../assets/images/home.svg"
 
-export const videoListURL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${process.env.REACT_APP_API_KEY}`
+export const VIDEO_LIST_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=50&key=${process.env.REACT_APP_API_KEY}`
 export const SIDEBAR_OPTIONS = [
     {
         icon: HomeIcon,

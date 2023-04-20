@@ -1,21 +1,35 @@
 import './App.css';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Watch from './components/Watch';
+import MainBody from './components/MainBody';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainBody />,
+    children: [
+      {
+        path: "",
+        element: <MainContent />,
+      },
+      {
+        path: "watch",
+        element: <Watch />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div>
-      <Provider store={store}>
-        <Header />
-        <main className='grid grid-cols-[200px_calc(100vw-200px)] h-[calc(100vh-50px)]'>
-          <Sidebar />
-          <MainContent />
-        </main>
-      </Provider>
-    </div>
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <MainBody />
+      </RouterProvider>
+    </Provider>
   );
 }
 

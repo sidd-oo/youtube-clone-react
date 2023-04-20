@@ -6,8 +6,11 @@ export const sidebarVisibilitySlice = createSlice({
         value: true
     },
     reducers: {
-        toggleSidebar: (state) => {state.value = !state.value}
-}});
+        toggleSidebar: (state) => { state.value = !state.value },
+        openSidebar: (state) => { state.value = true },
+        closeSidebar: (state) => { state.value = false },
+    }
+});
 
-export const {toggleSidebar} = sidebarVisibilitySlice.actions;
+export const { toggleSidebar, openSidebar, closeSidebar } = sidebarVisibilitySlice.actions;
 export default sidebarVisibilitySlice.reducer;
