@@ -3,7 +3,7 @@ import MainContent from './components/MainContent';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Watch from './components/Watch';
+import WatchPage from './components/WatchPage';
 import MainBody from './components/MainBody';
 
 const router = createBrowserRouter([
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: "watch",
-        element: <Watch />,
+        element: <WatchPage />,
       },
     ],
   },

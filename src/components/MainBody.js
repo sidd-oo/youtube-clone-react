@@ -15,9 +15,9 @@ const MainBody = () => {
     return (
         <>
             <Header />
-            <main className='grid grid-cols-[200px_calc(100vw-200px)] h-[calc(100vh-50px)]'>
-                <Sidebar />
-                <Outlet />
+            <main className='flex flex-row h-[calc(100vh-50px)]'>
+                <Sidebar/>
+                <Outlet/>
             </main>
         </>
     )

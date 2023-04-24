@@ -15,7 +15,7 @@ const Sidebar = () => {
   const sidebarVisibility = useSelector((store) => store.sidebarVisibility.value);
 
   return sidebarVisibility ? (
-    <div className='shadow-md py-4 px-2'>
+    <div className='w-[220px] shadow-md py-4 px-2'>
       {SIDEBAR_OPTIONS?.map((options, index) => {
         return <SidebarOption key={index} icon={options.icon} name={options.name} />
       })}
