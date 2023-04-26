@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { closeSidebar } from '../redux/sidebarVisiblilitySlice';
 import LiveChat from './LiveChat';
 import VideoPlayer from './VideoPlayer';
-import CommentsThread from './CommentsThread';
+import CommentsThread from './CommentsThreads/CommentsThread';
 
 const WatchPage = () => {
 
@@ -27,8 +27,8 @@ const WatchPage = () => {
         </div>
       </div>
       <div className='flex flex-row m-5 mt-8 h-[70vh] w-full justify-between'>
-        <div className='w-[70%] border-2 border-gray-900'>
-          <CommentsThread />
+        <div className='w-[70%]'>
+          <CommentsThread videoID={videoID} />
         </div>
         <div className="w-[30%] ml-5 border-2 border-gray-900">
           Suggestion of Videos goes here
