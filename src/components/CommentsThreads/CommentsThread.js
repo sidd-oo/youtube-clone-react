@@ -9,16 +9,20 @@ const CommentsThread = ({ videoID }) => {
   const [commentThread, setCommentThread] = useState([]);
   const [visibleSection, setVisibleSection] = useState(null);
 
-
   useEffect(() => {
     const fetchCommentsThread = (async () => {
-      const commentThreadResponse = await axios.get(COMMENTS_THREAD_URL+`&videoId=${videoID}`);
-      setCommentThread(commentThreadResponse?.data?.items)
+      const commentThreadResponse = await axios.get(COMMENTS_THREAD_URL + `&videoId=${videoID}`);
+      setCommentThread(commentThreadResponse?.data?.items);
 
     })
     fetchCommentsThread();
   }, [videoID])
 
+  if (commentThread.length === 0) {
+    return (<>
+      <h2 className='flex justify-center items-center mb-56'>Comments are turned off. <span className='font-semibold text-blue-700 ml-2'>Learn more</span></h2>
+    </>)
+  }
 
   return (
     <>
@@ -29,7 +33,7 @@ const CommentsThread = ({ videoID }) => {
               <TopLevelComment
                 item={item}
                 repliesQty={item?.replies?.comments?.length}
-                visibleSection = {visibleSection}
+                visibleSection={visibleSection}
                 setVisibleSection={setVisibleSection}
               />
               {

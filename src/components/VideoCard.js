@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import WatchPage from './WatchPage'
+import WatchPage from './WatchPage/WatchPage'
 import { publishedAt } from '../utils/publisedAt'
 
 const VideoCard = ({ video }) => {
