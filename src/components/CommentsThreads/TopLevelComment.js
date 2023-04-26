@@ -3,8 +3,9 @@ import { publishedAt as publishedAtFunc } from '../../utils/publisedAt'
 import LikeIcon from "../../assets/images/like.svg"
 import UnlikeIcon from "../../assets/images/unlike.svg"
 import ArrowDownIcon from "../../assets/images/arrow-down.svg"
+import ArrowUpIcon from "../../assets/images/arrow-up.svg"
 
-const TopLevelComment = ({ item, repliesQty, setVisibleSection }) => {
+const TopLevelComment = ({ item, repliesQty, setVisibleSection, visibleSection }) => {
     const { authorProfileImageUrl, authorDisplayName, publishedAt, textDisplay } = item.snippet?.topLevelComment?.snippet;
     return (
         <div className='flex flex-col'>
@@ -25,10 +26,11 @@ const TopLevelComment = ({ item, repliesQty, setVisibleSection }) => {
             {repliesQty &&
                 (
                     <div
-                        className='flex flex-row mr-3 items-center ml-12 mb-2'
-                        onClick={()=>setVisibleSection(item.id)}
+                        className='flex flex-row mr-3 items-center ml-12 mb-2 cursor-pointer'
+                        onClick={item.id !== visibleSection ? ()=>setVisibleSection(item.id) : ()=>setVisibleSection(null)}
                     >
-                        <img className="w-3 h-3 mr-2 hover:bg-gray-300 hover:rounded-full" src={ArrowDownIcon} alt="like" />
+                        {
+                            item.id === visibleSection  ? <img className="w-3 h-3 mr-2 hover:bg-gray-300 hover:rounded-full" src={ArrowUpIcon} alt="like" /> : <img className="w-3 h-3 mr-2 hover:bg-gray-300 hover:rounded-full" src={ArrowDownIcon} alt="like" />}
                         <span className='text-blue-900 font-semibold'> {repliesQty} Reply</span>
                     </div>
                 )}

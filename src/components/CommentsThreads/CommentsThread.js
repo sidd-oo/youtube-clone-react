@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import TopLevelComment from './TopLevelComment';
 import CommentReply from './CommentReply';
+import { COMMENTS_THREAD_URL } from '../../utils/constants';
 
 const CommentsThread = ({ videoID }) => {
 
@@ -11,7 +12,7 @@ const CommentsThread = ({ videoID }) => {
 
   useEffect(() => {
     const fetchCommentsThread = (async () => {
-      const commentThreadResponse = await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoID}&key=${process.env.REACT_APP_API_KEY}&maxResults=100`);
+      const commentThreadResponse = await axios.get(COMMENTS_THREAD_URL+`&videoId=${videoID}`);
       setCommentThread(commentThreadResponse?.data?.items)
 
     })
@@ -28,10 +29,9 @@ const CommentsThread = ({ videoID }) => {
               <TopLevelComment
                 item={item}
                 repliesQty={item?.replies?.comments?.length}
+                visibleSection = {visibleSection}
                 setVisibleSection={setVisibleSection}
               />
-              {console.log(visibleSection, "visibleSection")}
-              {console.log(item.id, "item.id")}
               {
                 visibleSection === item.id && item?.replies?.comments?.map((commentStructure) => {
                   return (
