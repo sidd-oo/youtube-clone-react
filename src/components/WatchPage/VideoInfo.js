@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { publishedAt as publishedAtFunc } from '../../utils/publisedAt';
 import Profile from "../../assets/images/profile.svg"
 import LikeDarkIcon from "../../assets/images/like-dark.png"
+import { VIDEO_INFO_URL } from '../../utils/constants';
 
 const VideoInfo = ({ setLiveBroadcastContent }) => {
 
@@ -13,12 +14,12 @@ const VideoInfo = ({ setLiveBroadcastContent }) => {
 
     useEffect(() => {
         const getVideoInfo = async () => {
-            const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoID}&key=${process.env.REACT_APP_API_KEY}`);
+            const res = await axios.get(VIDEO_INFO_URL+`&id=${videoID}`);
             setVideoInfo(res.data);
             setLiveBroadcastContent(res.data.items[0].snippet.liveBroadcastContent === "live" ? true : false)
         }
         getVideoInfo();
-    }, [videoID, setLiveBroadcastContent])
+    }, [videoID])
 
     return (
         <div className='flex flex-col'>

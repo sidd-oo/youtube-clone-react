@@ -29,7 +29,7 @@ const WatchPage = () => {
       setVideoList(res.data.items);
     }
     fetchVideoList();
-  })
+  }, [])
 
   return (
     <div className='flex flex-col w-[85%] mx-auto items-center'>

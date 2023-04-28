@@ -6,16 +6,17 @@ const SuggestiveSearchBar = () => {
 
     const [searchValue, setSearchValue] = useState("");
     const [searchSuggestion, setSearchSuggestion] = useState([]);
+    const CORS_PROXY = `https://corsproxy.io/?`
 
-    // useEffect(()=>{
-    //     const autosuggestionQuery = async() => {
-    //         const res = await axios.get(`https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchValue}`);
-    //         console.log(res)
-    //         // setSearchSuggestion(res);
-    //     }
+    useEffect(()=>{
+        const autosuggestionQuery = async() => {
+            const res = await axios.get(`${CORS_PROXY}https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchValue}`);
+            console.log(res)
+            // setSearchSuggestion(res);
+        }
 
-    //     autosuggestionQuery();
-    // },[searchValue])
+        autosuggestionQuery();
+    },[searchValue])
 
     return (
         <div className='flex'>
