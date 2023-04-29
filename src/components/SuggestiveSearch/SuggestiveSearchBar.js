@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SearchIcon from "../../assets/images/search.svg"
 import MaginfierIcon from "../../assets/images/maginfier.svg"
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SuggestiveSearchBar = () => {
     const [searchValue, setSearchValue] = useState("");
@@ -17,7 +18,6 @@ const SuggestiveSearchBar = () => {
         autosuggestionQuery();
     }, [searchValue])
 
-    console.log(searchSuggestion);
     return (
         <>
             <div className='flex flex-col'>
@@ -33,12 +33,14 @@ const SuggestiveSearchBar = () => {
                         <img className='w-5 h-5 mx-auto' src={MaginfierIcon} alt="search-icon" />
                     </button>
                 </div>
-                {searchSuggestion.length > 0  && <ul className='absolute top-10 rounded-lg border-gray-900 bg-white hover:bg-gray-400-200 w-96 shadow-lg py-2'>
-                    {searchSuggestion.map((item)=>{
-                        return <li className='flex items-center pt-3 px-5 hover:bg-gray-50 font-semibold text-slate-700'>
-                        <img src={MaginfierIcon} alt="maginfierIcon" className='h-5 w-5 mr-4'/>
-                        {item}
-                    </li>
+                {searchSuggestion.length > 0 && <ul className='absolute top-10 rounded-lg border-gray-900 bg-white hover:bg-gray-400-200 w-96 shadow-lg py-2'>
+                    {searchSuggestion.map((item, index) => {
+                        return <Link key={index} to="/searchResults" state={{ searchedQuery:item }} onClick={()=>{setSearchValue("")}}>
+                            <li className='flex items-center pt-3 px-5 hover:bg-gray-50 font-semibold text-slate-700'>
+                                <img src={MaginfierIcon} alt="maginfierIcon" className='h-5 w-5 mr-4' />
+                                {item}
+                            </li>
+                        </Link>
                     })}
                 </ul>}
             </div>
