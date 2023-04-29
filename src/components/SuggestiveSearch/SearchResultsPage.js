@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import { publishedAt as publishedAtFunc } from "../../utils/publisedAt"
+import { SEARCH_URL } from '../../utils/constants';
 
 const SearchResultsPage = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -10,7 +11,7 @@ const SearchResultsPage = () => {
 
     useEffect(() => {
         const fetchSearchedResults = async () => {
-            const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchedQuery}&type=video&key=${process.env.REACT_APP_API_KEY}`);
+            const res = await axios.get(SEARCH_URL+`&q=${searchedQuery}`);
             setSearchResults(res.data.items);
             console.log(res.data.items[0], searchedQuery);
         }
