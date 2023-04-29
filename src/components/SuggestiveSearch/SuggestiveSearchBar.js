@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import SearchIcon from "../../assets/images/search.svg"
 import MaginfierIcon from "../../assets/images/maginfier.svg"
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -15,7 +14,13 @@ const SuggestiveSearchBar = () => {
             setSearchSuggestion(res.data[1]);
         }
 
-        autosuggestionQuery();
+        const timer = setTimeout(() => {
+            autosuggestionQuery();
+        }, 500);
+
+        return ()=>{
+            clearTimeout(timer);
+        }
     }, [searchValue])
 
     return (

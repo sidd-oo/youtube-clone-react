@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom'
 import { closeSidebar } from '../../redux/sidebarVisiblilitySlice';
-import LiveChat from '../LiveChat';
+import LiveChat from './LiveChat';
 import VideoPlayer from './VideoPlayer';
 import CommentsThread from '../CommentsThreads/CommentsThread';
 import VideoInfo from './VideoInfo';
