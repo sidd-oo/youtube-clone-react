@@ -19,7 +19,7 @@ const Header = () => {
                     <img className="mt-1 h-6 ml-3" src={VideoIcon} alt="video-icon" />
                 </Link>
             </div>
-            <SuggestiveSearchBar />
+            <SuggestiveSearchBar/>
             <div className='mx-2'>
                 <img className="w-8 h-8 text-black-900" src={ProfileIcon} alt="profile-icon" />
             </div>
