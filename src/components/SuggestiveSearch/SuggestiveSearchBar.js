@@ -28,13 +28,13 @@ const SuggestiveSearchBar = () => {
             <div className='flex flex-col'>
                 <div className="flex flex-row relative">
                     <input
-                        className="placeholder:pl-3 placeholder-gray-500 border-2 rounded-l-3xl border-r-0 h-8 w-96 pl-3 "
+                        className="placeholder:pl-3 placeholder-gray-500 border-2 rounded-l-3xl border-r-0 h-9 w-96 pl-3 "
                         type='text'
                         placeholder='Search'
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                     ></input>
-                    <button className='border-2 rounded-r-3xl bg-gray-100 border-l-0 w-12 h-8'>
+                    <button className='border-2 rounded-r-3xl bg-gray-100 border-l-0 w-16 h-9'>
                         <img className='w-5 h-5 mx-auto' src={MaginfierIcon} alt="search-icon" />
                     </button>
                 </div>
