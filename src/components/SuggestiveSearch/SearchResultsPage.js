@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import { publishedAt as publishedAtFunc } from "../../utils/publisedAt"
 import { SEARCH_URL } from '../../utils/constants';
+import { fetchChannelLogo } from '../../utils/fetchChannelLogo';
 
 const SearchResultsPage = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -13,7 +14,7 @@ const SearchResultsPage = () => {
         const fetchSearchedResults = async () => {
             const res = await axios.get(SEARCH_URL+`&q=${searchedQuery}`);
             setSearchResults(res.data.items);
-            console.log(res.data.items[0], searchedQuery);
+            console.log(fetchChannelLogo(res.data.items[0]?.snippet?.channelId));
         }
 
         fetchSearchedResults();
