@@ -4,6 +4,7 @@ export const VIDEO_LIST_URL = `https://youtube.googleapis.com/youtube/v3/videos?
 export const COMMENTS_THREAD_URL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key=${process.env.REACT_APP_API_KEY}&maxResults=100`;
 export const VIDEO_INFO_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=${process.env.REACT_APP_API_KEY}`
 export const SEARCH_URL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&key=${process.env.REACT_APP_API_KEY}`;
+export const AUTOSUGGESTION_SEARCH_URL = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=`
 export const SIDEBAR_OPTIONS = [
     {
         icon: HomeIcon,

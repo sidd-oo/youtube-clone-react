@@ -2,7 +2,7 @@ import React from 'react'
 import HamburgerIcon from "../assets/images/hamburger.svg"
 import VideoIcon from "../assets/images/videoLogo.svg"
 import ProfileIcon from "../assets/images/profile.svg"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleSidebar } from '../redux/sidebarVisiblilitySlice'
 import { Link } from 'react-router-dom'
 import SuggestiveSearchBar from './SuggestiveSearch/SuggestiveSearchBar'

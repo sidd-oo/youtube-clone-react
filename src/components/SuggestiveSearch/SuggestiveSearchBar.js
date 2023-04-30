@@ -2,27 +2,41 @@ import React, { useEffect, useState } from 'react'
 import MaginfierIcon from "../../assets/images/maginfier.svg"
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { cacheSearchResult } from '../../redux/cacheSearchSlice';
+import { AUTOSUGGESTION_SEARCH_URL } from '../../utils/constants';
 
 const SuggestiveSearchBar = () => {
     const [searchValue, setSearchValue] = useState("");
     const [searchSuggestion, setSearchSuggestion] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
 
+    const cacheResult = useSelector((store)=> store.cacheSearch);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const CORS_PROXY = `https://corsproxy.io/?`
+
         const autosuggestionQuery = async () => {
-            const res = await axios.get(`${CORS_PROXY}https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchValue}`);
+            const res = await axios.get(`${CORS_PROXY}${AUTOSUGGESTION_SEARCH_URL}${searchValue}`);
             setSearchSuggestion(res.data[1]);
+            dispatch(cacheSearchResult({
+                [searchValue]:res.data[1]
+            }));
         }
-
+        
         const timer = setTimeout(() => {
-            autosuggestionQuery();
+            if(cacheResult[searchValue]){
+                setSearchSuggestion(cacheResult[searchValue])
+            }else{
+                autosuggestionQuery();
+            }
         }, 500);
-
+        
         return () => {
             clearTimeout(timer);
         }
-    }, [searchValue])
+    }, [searchValue]);
 
     return (
         <>
