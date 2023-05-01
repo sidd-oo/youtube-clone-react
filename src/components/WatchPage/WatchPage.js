@@ -15,7 +15,6 @@ const WatchPage = () => {
   const [params] = useSearchParams();
   const videoID = params.get("v");
   const dispatch = useDispatch();
-  const [liveBroadcastContent, setLiveBroadcastContent] = useState(false);
   const [videoList, setVideoList] = useState([]);
 
 
@@ -43,9 +42,7 @@ const WatchPage = () => {
       </div>
       <div className='flex flex-row m-5 h-[45vh] w-full justify-between'>
         <div className='flex flex-col w-[70%]'>
-          <VideoInfo
-            setLiveBroadcastContent={setLiveBroadcastContent}
-          />
+          <VideoInfo/>
         </div>
         <div className="w-[30%]">
           <div className="ml-5">

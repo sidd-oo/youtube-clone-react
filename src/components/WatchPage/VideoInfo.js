@@ -6,7 +6,7 @@ import Profile from "../../assets/images/profile.svg"
 import LikeDarkIcon from "../../assets/images/like-dark.png"
 import { VIDEO_INFO_URL } from '../../utils/constants';
 
-const VideoInfo = ({ setLiveBroadcastContent }) => {
+const VideoInfo = () => {
 
     const [videoInfo, setVideoInfo] = useState(null);
     const [searchParams] = useSearchParams();
@@ -14,9 +14,8 @@ const VideoInfo = ({ setLiveBroadcastContent }) => {
 
     useEffect(() => {
         const getVideoInfo = async () => {
-            const res = await axios.get(VIDEO_INFO_URL+`&id=${videoID}`);
+            const res = await axios.get(VIDEO_INFO_URL + `&id=${videoID}`);
             setVideoInfo(res.data);
-            setLiveBroadcastContent(res.data.items[0].snippet.liveBroadcastContent === "live" ? true : false)
         }
         getVideoInfo();
     }, [videoID])

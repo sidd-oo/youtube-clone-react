@@ -9,35 +9,21 @@ const Tag = ({ name }) => {
 
 const VideoTags = () => {
     return (
-        <div className='flex ml-5 mt-5 overflow-scroll scrollbar-hide'>
-            <Tag name="All" />
+        <div className='flex ml-1 mt-5 overflow-scroll scrollbar-hide'>
+            <button className='w-100  bg-black text-white px-3 py-1 mx-3 rounded-lg'>
+                Popular
+            </button>
+            <Tag name="Javascript" />
+            <Tag name="Computer Science" />
+            <Tag name="Mixes" />
             <Tag name="Music" />
-             <Tag name="Gaming" /> 
-             <Tag name="News" /> 
-             <Tag name="Anime" /> 
-             <Tag name="Cartoon" />
-              <Tag name="Movies/Series" />
-              <Tag name="All" />
-            <Tag name="Music" />
-             <Tag name="Gaming" /> 
-             <Tag name="News" /> 
-             <Tag name="Anime" /> 
-             <Tag name="Cartoon" />
-              <Tag name="Movies/Series" />
-              <Tag name="All" />
-            <Tag name="Music" />
-             <Tag name="Gaming" /> 
-             <Tag name="News" /> 
-             <Tag name="Anime" /> 
-             <Tag name="Cartoon" />
-              <Tag name="Movies/Series" />
-              <Tag name="All" />
-            <Tag name="Music" />
-             <Tag name="Gaming" /> 
-             <Tag name="News" /> 
-             <Tag name="Anime" /> 
-             <Tag name="Cartoon" />
-              <Tag name="Movies/Series" />
+            <Tag name="Gaming" />
+            <Tag name="News" />
+            <Tag name="Comedy" />
+            <Tag name="Anime" />
+            <Tag name="Cartoon" />
+            <Tag name="Politics" />
+            <Tag name="Trailers" />
         </div>
     )
 }
