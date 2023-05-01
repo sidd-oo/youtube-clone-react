@@ -11,7 +11,7 @@ const SuggestiveSearchBar = () => {
     const [searchSuggestion, setSearchSuggestion] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
 
-    const cacheResult = useSelector((store)=> store.cacheSearch);
+    const cacheResult = useSelector((store) => store.cacheSearch);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,18 +21,18 @@ const SuggestiveSearchBar = () => {
             const res = await axios.get(`${CORS_PROXY}${AUTOSUGGESTION_SEARCH_URL}${searchValue}`);
             setSearchSuggestion(res.data[1]);
             dispatch(cacheSearchResult({
-                [searchValue]:res.data[1]
+                [searchValue]: res.data[1]
             }));
         }
-        
+
         const timer = setTimeout(() => {
-            if(cacheResult[searchValue]){
+            if (cacheResult[searchValue]) {
                 setSearchSuggestion(cacheResult[searchValue])
-            }else{
+            } else {
                 autosuggestionQuery();
             }
         }, 500);
-        
+
         return () => {
             clearTimeout(timer);
         }
@@ -48,21 +48,27 @@ const SuggestiveSearchBar = () => {
                         placeholder='Search'
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        onFocus={()=>setShowSuggestion(true)}
-                        onBlur={()=>setShowSuggestion(false)}
+                        onFocus={() => setShowSuggestion(true)}
                     ></input>
                     <button className='border-2 rounded-r-3xl bg-gray-100 border-l-0 w-16 h-9'>
                         <img className='w-5 h-5 mx-auto' src={MaginfierIcon} alt="search-icon" />
                     </button>
                 </form>
                 {showSuggestion && searchSuggestion.length > 0 && <ul className='absolute top-10 rounded-lg border-gray-900 bg-white hover:bg-gray-400-200 w-96 shadow-lg py-2'>
-                    {searchSuggestion.map((item, index) => {
-                        return <Link key={index} to="/searchResults" state={{ searchedQuery: item }} onClick={() => { setSearchValue("") }}>
-                            <li className='flex items-center pt-3 px-5 hover:bg-gray-50 font-semibold text-slate-700'>
+                    {searchSuggestion.map((item) => {
+                        console.log(item)
+                        return <form>
+                            <Link
+                                key={item}
+                                to="/searchResults"
+                                state={{ searchedQuery: item }}
+                                onClick={() => { setSearchValue("") }}
+                                className='flex items-center pt-3 px-5 hover:bg-gray-50 font-semibold text-slate-700'
+                            >
                                 <img src={MaginfierIcon} alt="maginfierIcon" className='h-5 w-5 mr-4' />
                                 {item}
-                            </li>
-                        </Link>
+                            </Link>
+                        </form>
                     })}
                 </ul>}
             </div >
