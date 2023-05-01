@@ -38,7 +38,7 @@ const WatchPage = () => {
           <VideoPlayer videoID={videoID} />
         </div>
         {liveBroadcastContent ?
-          <div className="w-[30%] ml-5 border-2 border-gray-900">
+          <div className="w-[30%] ml-5 border-2 border-gray-300 rounded-lg overflow-y-hidden overflow-x-hidden">
             <LiveChat />
           </div> : (<div className="w-[30%] ml-5">
             {videoList.map((video) => {
