@@ -37,27 +37,22 @@ const WatchPage = () => {
         <div className='flex flex-col w-[70%] h-[500px]'>
           <VideoPlayer videoID={videoID} />
         </div>
-        {liveBroadcastContent ?
-          <div className="w-[30%] ml-5 border-2 border-gray-300 rounded-lg overflow-y-hidden overflow-x-hidden">
-            <LiveChat />
-          </div> : (<div className="w-[30%] ml-5">
-            {videoList.map((video) => {
-              return <SuggestionVideoCard key={video.id} video={video} />
-            })}
-          </div>)}
+        <div className="w-[30%] ml-5 border-2 border-gray-300 rounded-lg overflow-y-hidden overflow-x-hidden">
+          <LiveChat />
+        </div>
       </div>
-      <div className='flex flex-row m-5 h-[70vh] w-full justify-between'>
+      <div className='flex flex-row m-5 h-[45vh] w-full justify-between'>
         <div className='flex flex-col w-[70%]'>
           <VideoInfo
             setLiveBroadcastContent={setLiveBroadcastContent}
           />
         </div>
         <div className="w-[30%]">
-        {(liveBroadcastContent === true) && <div className="ml-5">
+          <div className="ml-5">
             {videoList.map((video) => {
               return <SuggestionVideoCard key={video.id} video={video} />
             })}
-          </div>}
+          </div>
         </div>
       </div>
       <div className='flex flex-row h-[70vh] w-full justify-between'>
